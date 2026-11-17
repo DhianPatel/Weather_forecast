@@ -9,15 +9,17 @@ st.write(
 )
 
 city = st.text_input("What city do you want to see weather condition for? ")
-
 if city:
   url = "https://weatherapi.com"
+  params = {"key": st.secrets["WEATHER_API_KEY"], "q": city, "aqi": "no"}
 
-
- temp = data.get("current").get("temp_c")
-condition = data.get("current").get("condition").get("text")
-wea = data.get("current").get("temp_f")
-st.write(
+  response = requests.get(url, params=params)
+  if response.status_code == 200:
+    data = response.json()
+    temp = data.get("current").get("temp_c")
+    condition = data.get("current").get("condition").get("text")
+    wea = data.get("current").get("temp_f")
+    st.write(
         "Weather of",
         city,
         "is",
@@ -27,3 +29,5 @@ st.write(
         "Fahrenheit and condition is",
         condition,
     )
+  else:
+    st.error(f"API Error {response.status_code}: {response.text}")
