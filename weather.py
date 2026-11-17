@@ -19,4 +19,8 @@ condition = requests.get(url).json().get("current").get("condition").get("text")
 wea = requests.get(url).json().get("current").get("temp_f")
 
 
-st.write(("Weather of", city, "is", temp, "Celsius", wea, "Fahrenheit and condition is", condition))
+st.write(
+    
+    "Weather of", city, "is", temp, "Celsius", wea, "Fahrenheit and condition is", condition
+
+)
