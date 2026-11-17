@@ -15,15 +15,15 @@ st.write(
 city = st.text_input("What city do you want to see weather condition for? ")
 
 if city:
-    app = (
+    url = (
             "http://weatherapi.com"
             + city
             + "&aqi=no"
     )
 
-temp = requests.get(app).json().get("current").get("temp_c")
+temp = requests.get(url).json().get("current").get("temp_c")
 
-condition = requests.get(app).json().get("current").get("condition").get("text")
+condition = requests.get(url).json().get("current").get("condition").get("text")
 
 wea = requests.get(url).json().get("current").get("temp_f")
 
