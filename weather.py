@@ -17,7 +17,7 @@ city = st.text_input("What city do you want to see weather condition for? ")
 
 if city:
   url = (
-      "http://weatherapi.com"
+      "https://weatherapi.com"
       + city
       + "&aqi=no"
   )
