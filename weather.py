@@ -16,18 +16,14 @@ st.write(
 city = st.text_input("What city do you want to see weather condition for? ")
 
 if city:
-    url = (
-        "https://weatherapi.com"
-            + city
-            + "&aqi=no"
-             )
+    url = "https://weatherapi.com"
+    params = {"key": "371d208957f5498082c100904260210", "q": city, "aqi": "no"}
 
+    data = requests.get(url, params=params).json()
+    temp = data.get("current").get("temp_c")
+    condition = data.get("current").get("condition").get("text")
+    wea = data.get("current").get("temp_f")
 
-temp = requests.get(url).json().get("current").get("temp_c")
-condition = (
-      requests.get(url).json().get("current").get("condition").get("text")
-  )
-wea = requests.get(url).json().get("current").get("temp_f")
 st.write(
       "Weather of",
       city,
