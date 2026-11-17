@@ -1,3 +1,7 @@
+streamlit
+requests
+
+
 # -*- mode: python ; coding: utf-8 -*-
 
 
